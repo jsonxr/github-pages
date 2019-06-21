@@ -6,8 +6,7 @@ Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://j
 
 ## Javascript
 
-[@jsonxr/prettier-config](https://github.com/jsonxr/prettier-config)
- - Global formatting options.
+[@jsonxr/prettier-config](https://github.com/jsonxr/prettier-config) - Global formatting options.
 
 
 ### Markdown

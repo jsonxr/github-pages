@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package oikogen;
+
+import "google/protobuf/timestamp.proto";
+
+message CalenderEvent {
+  string title = 1;
+  string description = 2;
+  google.protobuf.Timestamp datetime = 3;
+  int32 duration = 4;
+  optional string photo = 5;
+}

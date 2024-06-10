@@ -7,7 +7,7 @@
     "start": "ts-node src/index.ts"
   },
   "devDependencies": {
-    "@grpc/grpc-js": "^1.9.5",
+    "@grpc/grpc-js": "^1.9.15",
     "ts-node": "^10.9.1",
     "ts-proto": "^1.160.0",
     "typescript": "^5.2.2"

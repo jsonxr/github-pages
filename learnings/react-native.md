@@ -18,3 +18,11 @@
   adb devices
   ```
 
+# Device Databases
+
+- realm
+- SQLite:
+  - [op-sqlite - fastest in 2024](https://github.com/OP-Engineering/op-sqlite)
+  - [op-sqlcipher]()
+  - [Original]()
+  - [expo](https://docs.expo.dev/versions/latest/sdk/sqlite/)

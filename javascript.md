@@ -27,10 +27,10 @@ by Supabase & Snaplet. Useful for demos. [Read blog post](https://supabase.com/b
 
 - [Thrift](https://thrift.apache.org/) - The Apache Thrift software framework, for scalable cross-language services development, combines a software stack with a code generation engine to build services that work efficiently and seamlessly between C++, Java, Python, PHP, Ruby, Erlang, Perl, Haskell, C#, Cocoa, JavaScript, Node.js, Smalltalk, OCaml and Delphi and other languages.
 
-- [valibot](https://valibot.dev)
-- [zod](https://zod.dev/)
-- [yup](https://github.com/jquense/yup)
-
+- [yup](https://github.com/jquense/yup) - The original popular schema library
+- [zod](https://zod.dev/) - The typescript friendly schema library before yup improved
+- [valibot](https://valibot.dev) - leaner/faster version of zod
+- [io-ts](https://gcanti.github.io/io-ts/) - random other one i barely looked at
 
 ## misc
 

@@ -5,13 +5,19 @@
   "license": "MIT",
   "scripts": {
     "start": "node src/index.js",
-    "test": "yarn tsc && promises-aplus-tests dist/aplus-adapter"
+    "test": "tsc && promises-aplus-tests dist/aplus-adapter"
   },
   "devDependencies": {
     "@types/q": "^1.5.8",
     "promises-aplus-tests": "^2.1.2",
     "ts-node": "^10.9.2",
     "typescript": "^5.6.3"
+  },
+  "overrides": {
+    "underscore": "1.12.1"
+  },
+  "resolutions": {
+    "underscore": "1.12.1"
   },
   "dependencies": {
     "q": "^1.5.1"

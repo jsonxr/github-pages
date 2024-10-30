@@ -3,7 +3,7 @@ const std = @import("std");
 pub fn build(b: *std.Build) void {
     // copy static files
     const staticFiles = b.addInstallDirectory(.{
-        .source_dir = b.path("static"),
+        .source_dir = b.path("public"),
         .install_dir = std.Build.InstallDir.bin,
         .install_subdir = "",
     });

@@ -1,0 +1,4 @@
+.zig-cache
+zig-out
+localhost.crt
+localhost.key

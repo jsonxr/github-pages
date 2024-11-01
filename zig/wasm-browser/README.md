@@ -1,14 +1,17 @@
 # wasm-browser
 
-Shows how to run a wasm module built in zig in a browser
+The basic example to run a wasm module built in zig in a browser
 
 ```sh
-# Install zvm if you haven't...
-# https://www.zvm.app/
+# install
+# https://www.zvm.app
+# https://direnv.net
 
+# setup
+direnv allow # allow us to set the right zig version
 bin/certs-generate.sh # Creates localhost ssl certs
 
-# Build and run the app
+# build and run the app
 zig build
 zig build run-web
 ```

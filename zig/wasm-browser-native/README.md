@@ -4,8 +4,8 @@ Shows how to build an app that runs native and in browser
 
 ```sh
 # install
-# https://www.zvm.app/
-# https://direnv.net/
+# https://www.zvm.app
+# https://direnv.net
 
 # setup
 direnv allow # allow us to set the right zig version
@@ -16,10 +16,3 @@ zig build
 zig build run-web # run the web example
 zig-out/bin/example
 ```
-
-<!-- ```sh
-bin/certs-generate.sh # Creates localhost ssl certs
-zig build
-zig build run-web # run the web server
-./zig-out/bin/example
-``` -->

@@ -5,22 +5,24 @@ const memory = new WebAssembly.Memory({
 
 const text_decoder = new TextDecoder();
 
+// Helper methods called from js to get access to wasm things
 const wasm = {
   instance: undefined,
-  getString: function (ptr, len) {
+  decodeString: function (ptr, len) {
     const memory = this.instance.exports.memory;
     return text_decoder.decode(new Uint8Array(memory.buffer, ptr, len));
   },
 };
 
+// Called from the zig side...
 const env = {
   memory,
   console_log: (ptr, len) => {
-    const str = wasm.getString(ptr, len);
+    const str = wasm.decodeString(ptr, len);
     console.log(str);
   },
   console_error: (ptr, len) => {
-    const str = wasm.getString(ptr, len);
+    const str = wasm.decodeString(ptr, len);
     console.error(str);
   },
 };
@@ -31,6 +33,6 @@ async function main() {
     { env }
   );
   wasm.instance = instance;
-  instance.exports.run();
+  instance.exports.start();
 }
 main();

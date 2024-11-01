@@ -8,5 +8,5 @@ pub fn main() void {
 // Entry point for wasm
 export fn run() void {
     console.log("hello world... {d}", .{42});
-    console.err("error...", .{});
+    console.err("example error message...", .{});
 }

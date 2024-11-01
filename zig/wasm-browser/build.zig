@@ -29,8 +29,8 @@ pub fn build(b: *std.Build) void {
 
     // run
     const server_cmd = b.addSystemCommand(&[_][]const u8{ "npx", "http-server", "./zig-out/bin", "-S", "-C", "localhost.crt", "-K", "localhost.key" });
-    const run_cmd = b.addSystemCommand(&[_][]const u8{ "open", "https://127.0.0.1:8081" });
-    const run_step = b.step("run", "Run the app");
+    const run_cmd = b.addSystemCommand(&[_][]const u8{ "open", "https://127.0.0.1:8080" });
+    const run_step = b.step("run-web", "Run the app");
     run_step.dependOn(&staticFiles.step);
     run_step.dependOn(&wasm_module.step);
     run_step.dependOn(&server_cmd.step);

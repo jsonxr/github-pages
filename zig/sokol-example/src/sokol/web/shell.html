@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"/>
+    <title>Sokol</title>
+    <style>
+        body { margin: 0; background-color: black }
+        .game {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            margin: 0px;
+            border: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            display: block;
+            image-rendering: optimizeSpeed;
+            image-rendering: -moz-crisp-edges;
+            image-rendering: -o-crisp-edges;
+            image-rendering: -webkit-optimize-contrast;
+            image-rendering: optimize-contrast;
+            image-rendering: crisp-edges;
+            image-rendering: pixelated;
+            -ms-interpolation-mode: nearest-neighbor;
+        }
+    </style>
+  </head>
+  <body>
+    <canvas class="game" id="canvas" oncontextmenu="event.preventDefault()"></canvas>
+
+    <div id="fpsCounter" style="position: fixed; top: 10px; left: 10px; color: white; font-size: 20px;">?</div>
+
+    <script type='text/javascript'>
+      var Module = {
+        preRun: [],
+        postRun: [],
+        print: (function() {
+            return function(text) {
+                text = Array.prototype.slice.call(arguments).join(' ');
+                console.log(text);
+            };
+        })(),
+        printErr: function(text) {
+            text = Array.prototype.slice.call(arguments).join(' ');
+            console.error(text);
+        },
+        canvas: (function() {
+            var canvas = document.getElementById('canvas');
+            //canvas.addEventListener("webglcontextlost", function(e) { alert('FIXME: WebGL context lost, please reload the page'); e.preventDefault(); }, false);
+            return canvas;
+        })(),
+        setStatus: function(text) { },
+        monitorRunDependencies: function(left) { },
+      };
+      window.onerror = function() {
+        console.log("onerror: " + event.message);
+      };
+
+    const frameTimes = [];
+    const smoothingFrames = 10;
+    let lastFrameTime = performance.now();
+    let fps = 0;
+    const fpsElement = document.getElementById("fpsCounter");
+    request_animation_frame_loop = (cb, userData) => {
+        function tick(timeStamp) {
+            const now = performance.now();
+            const delta = now - lastFrameTime;
+            lastFrameTime = now;
+
+            // Store the time between frames in the frameTimes array
+            frameTimes.push(delta);
+
+            // Keep only the last 10 frame times
+            if (frameTimes.length > smoothingFrames) {
+                frameTimes.shift();
+            }
+
+            // Calculate the average delta time
+            const averageDelta =
+                frameTimes.reduce((sum, frameTime) => sum + frameTime, 0) /
+                frameTimes.length;
+
+            // Calculate the smoothed FPS
+            fps = 1000 / averageDelta;
+            // Display the FPS value
+            if (fpsElement) {
+                fpsElement.innerText = `FPS: ${fps.toFixed(0)}`;
+            }
+
+            if (getWasmTableEntry(cb)(timeStamp, userData)) {
+                requestAnimationFrame(tick);
+            }
+        }
+        return requestAnimationFrame(tick);
+    };
+    </script>
+    {{{ SCRIPT }}}
+  </body>
+  <script>
+
+        </script>
+</html>

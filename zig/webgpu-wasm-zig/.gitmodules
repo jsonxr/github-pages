@@ -1,0 +1,6 @@
+[submodule "emsdk"]
+	path = emsdk
+	url = https://github.com/emscripten-core/emsdk.git
+[submodule "glfw"]
+	path = glfw
+	url = git@github.com:glfw/glfw.git

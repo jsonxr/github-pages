@@ -1,0 +1,32 @@
+---
+title: 'TypeScript Utility: keyof nested object'
+description: In this blog post, we will learn how to build a TypeScript util type, that exposes all the key paths of an object, including the nested ones.
+date: 2024-01-02
+tags: ["typescript"]
+published: true
+---
+
+# Typescript: NestedKeyOf
+
+- [Utility of nested objects](https://dev.to/pffigueiredo/typescript-utility-keyof-nested-object-2pa3)
+
+
+  ```typescript
+  type NestedKeyOf<ObjectType extends object> =
+    {[Key in keyof ObjectType & (string | number)]: ObjectType[Key] extends object
+      ? `${Key}` | `${Key}.${NestedKeyOf<ObjectType[Key]>}`
+      : `${Key}`
+    }[keyof ObjectType & (string | number)];
+  declare function sortBy<T extends object>(person: T, sort: NestedKeyOf<T>)
+
+  const person = {
+    name: 'bob',
+    age: 30,
+    dog: {
+      owner: {
+        name: 'mydog'
+      }
+    }
+  }
+  sortBy(person, 'dog.owner.name'); // <- typescript shows valid options
+  ```

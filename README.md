@@ -1,40 +1,36 @@
-# jasonrowland.com
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-# Javascript
+## Getting Started
 
-- [@jsonxr/promises](https://github.com/jsonxr/js-promises) - Promises that
-  throttle and limit their execution.
+First, run the development server:
 
-- [ws-routable](https://github.com/jsonxr/ws-routable) - Routable web socket
-  client and server. Allows you to send commands and wait on responses from the
-  web socket server.
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
+```
 
-## React Native
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-- [react-native-material-icons](https://github.com/jsonxr/react-native-material-icons) -
-  Google's Material Icons as SVG files. When only using a few icons, much more
-  efficient to use the svg files. react-native-vector-icons did not have the
-  fonts I needed. This also enables me to have a smaller application when I only
-  need a handfull of icons (due to tree shaking).
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-- [react-native-materialcommunity-icons](https://github.com/jsonxr/react-native-materialcommunity-icons) -
-  When only using a few icons, more efficient to use svg files instead of a
-  font.
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-- [react-native-fontawesome-icons](https://github.com/jsonxr/react-native-fontawesome-icons) -
-  When only using a few icons, more efficient to use svg files instead of a
-  font.
+## Learn More
 
-- [react-native-change](https://github.com/jsonxr/react-native-change) - Tool to
-  rename a react-native application
+To learn more about Next.js, take a look at the following resources:
 
-## Useful Libraries
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-- [javascript](javascript.md)
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-- [react-native](react-native.md)
+## Deploy on Vercel
 
-# Zig
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-- [Run zig wasm file in node](zig/wasm-node/README.md)
-- [Run zig wasm file in browser](zig/wasm-browser/README.md)
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.

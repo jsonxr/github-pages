@@ -1,7 +1,9 @@
-import { posts } from '#site/content';
+import { Post, posts } from '#site/content';
 import '@/styles/mdx.css';
+import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { MdxContent } from '../../../components/MdxContent';
+import { siteConfig } from '../../../config/site';
 
 type Params = { slug: string[] };
 
@@ -11,12 +13,60 @@ export async function generateStaticParams(): Promise<Params[]> {
   }));
 }
 
+export async function generateMetadata({
+  params,
+}: PostPageProps): Promise<Metadata> {
+  const post = await getPostFromParams(params);
+  if (!post) {
+    return {};
+  }
+
+  const ogSearchParams = new URLSearchParams();
+  ogSearchParams.set('title', post.title);
+  //const imageUrl = `/api/og?${ogSearchParams.toString()}`;
+
+  return {
+    title: post.title,
+    description: post.description,
+    authors: { name: siteConfig.author },
+    openGraph: {
+      title: post.title,
+      description: post.description,
+      type: 'article',
+      url: post.slug,
+      // images: [
+      //   {
+      //     url: imageUrl,
+      //     width: 1200,
+      //     height: 630,
+      //     alt: post.title,
+      //   },
+      // ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: post.title,
+      description: post.description,
+      //images: [imageUrl],
+    },
+  };
+}
+
+async function getPostFromParams(
+  params: Promise<Params>
+): Promise<Post | undefined> {
+  const slug = (await params)?.slug?.join('/');
+  const post = posts.find((p) => p.slugAsParams === slug);
+  return post;
+}
+
 type PostPageProps = {
   params: Promise<Params>;
 };
 export default async function PostPage({ params }: PostPageProps) {
-  const slug = (await params)?.slug?.join('/');
-  const post = posts.find((p) => p.slugAsParams === slug);
+  const post = await getPostFromParams(params);
+  // const slug = (await params)?.slug?.join('/');
+  // const post = posts.find((p) => p.slugAsParams === slug);
 
   if (!post || !post.published) {
     notFound();

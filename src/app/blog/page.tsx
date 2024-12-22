@@ -1,9 +1,15 @@
 import { posts } from '#site/content';
 import { PostItem } from '@/components/post-item';
 import { sortPosts } from '@/lib/utils';
+import { Metadata } from 'next';
 import { QueryPagination } from '../../components/query-pagination';
 
 const POST_PER_PAGE = 2;
+
+export const metadata: Metadata = {
+  title: 'My Blog',
+  description: 'Articles I find interesting',
+};
 
 type BlogPageProps = {
   searchParams: Promise<{

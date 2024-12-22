@@ -1,7 +1,8 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { /*Geist, Geist_Mono, */ Inter } from 'next/font/google';
 import { Providers } from '../components/providers';
 import { SiteHeader } from '../components/site-header';
+import { siteConfig } from '../config/site';
 import { cn } from '../lib/utils';
 import './globals.css';
 
@@ -16,8 +17,16 @@ const font = Inter({
 // });
 
 export const metadata: Metadata = {
-  title: 'Jason Rowland',
-  description: 'Personal development',
+  title: siteConfig.name,
+  description: siteConfig.description,
+  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL ?? siteConfig.url),
+};
+
+export const viewport: Viewport = {
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: 'white' },
+    { media: '(prefers-color-scheme: dark)', color: 'black' },
+  ],
 };
 
 export default function RootLayout({

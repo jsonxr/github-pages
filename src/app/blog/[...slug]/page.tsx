@@ -1,5 +1,7 @@
 import { posts } from '#site/content';
+import '@/styles/mdx.css';
 import { notFound } from 'next/navigation';
+import { MdxContent } from '../../../components/MdxContent';
 
 type Params = { slug: string[] };
 
@@ -26,6 +28,8 @@ export default async function PostPage({ params }: PostPageProps) {
       {post.description ? (
         <p className="text-xl mt-0 text-muted-foreground">{post.description}</p>
       ) : null}
+      <hr className="my-4" />
+      <MdxContent code={post.body} />
     </article>
   );
 }

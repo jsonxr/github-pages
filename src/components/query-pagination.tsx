@@ -28,6 +28,11 @@ export const QueryPagination = ({
     params.set('page', pageNumber.toString());
     return `${pathname}?${params.toString()}`;
   };
+
+  if (totalPages === 1) {
+    return null;
+  }
+
   return (
     <Pagination className={className}>
       <PaginationContent>

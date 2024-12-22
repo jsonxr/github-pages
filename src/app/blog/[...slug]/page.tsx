@@ -1,11 +1,44 @@
 import { Post, posts } from '#site/content';
+import { MdxContent } from '@/components/MdxContent';
+import { Tag } from '@/components/Tag';
+import { siteConfig } from '@/config/site';
 import '@/styles/mdx.css';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { MdxContent } from '../../../components/MdxContent';
-import { siteConfig } from '../../../config/site';
 
 type Params = { slug: string[] };
+type PostPageProps = {
+  params: Promise<Params>;
+};
+export default async function PostPage({ params }: PostPageProps) {
+  const post = await getPostFromParams(params);
+  // const slug = (await params)?.slug?.join('/');
+  // const post = posts.find((p) => p.slugAsParams === slug);
+
+  if (!post || !post.published) {
+    notFound();
+  }
+
+  return (
+    <article className="container py-6 prose dark:prose-invert">
+      <h1 className="mb-2">{post.title}</h1>
+      <div className="flex gap-2 mb-2">
+        {post.tags?.map((tag) => (
+          <Tag key={tag} tag={tag} />
+        ))}
+      </div>
+      {post.description ? (
+        <p className="text-xl mt-0 text-muted-foreground">{post.description}</p>
+      ) : null}
+      <hr className="my-4" />
+      <MdxContent code={post.body} />
+    </article>
+  );
+}
+
+//----------------------------------------------------------------------------
+// Helper functions
+//----------------------------------------------------------------------------
 
 export async function generateStaticParams(): Promise<Params[]> {
   return posts.map((post) => ({
@@ -58,28 +91,4 @@ async function getPostFromParams(
   const slug = (await params)?.slug?.join('/');
   const post = posts.find((p) => p.slugAsParams === slug);
   return post;
-}
-
-type PostPageProps = {
-  params: Promise<Params>;
-};
-export default async function PostPage({ params }: PostPageProps) {
-  const post = await getPostFromParams(params);
-  // const slug = (await params)?.slug?.join('/');
-  // const post = posts.find((p) => p.slugAsParams === slug);
-
-  if (!post || !post.published) {
-    notFound();
-  }
-
-  return (
-    <article className="container py-6 prose dark:prose-invert">
-      <h1 className="mb-2">{post.title}</h1>
-      {post.description ? (
-        <p className="text-xl mt-0 text-muted-foreground">{post.description}</p>
-      ) : null}
-      <hr className="my-4" />
-      <MdxContent code={post.body} />
-    </article>
-  );
 }

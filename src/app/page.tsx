@@ -1,9 +1,9 @@
 import { posts } from '#site/content';
 import Link from 'next/link';
-import { PostItem } from '../components/post-item';
+import { PostList } from '../components/PostList';
 import { buttonVariants } from '../components/ui/button';
 import { siteConfig } from '../config/site';
-import { cn, formatDate, sortPosts } from '../lib/utils';
+import { cn, sortPosts } from '../lib/utils';
 
 const LATEST_POST_COUNT = 5;
 
@@ -45,18 +45,7 @@ export default function Home() {
         <h2 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-center">
           Latest Posts
         </h2>
-        <ul className="flex flex-col">
-          {latestPosts.map(({ slug, title, description, date }) => (
-            <li key={slug} className="first:border-t first:border-border">
-              <PostItem
-                slug={slug}
-                title={title}
-                date={formatDate(date)}
-                description={description}
-              />
-            </li>
-          ))}
-        </ul>
+        <PostList data={latestPosts} />
       </section>
     </>
   );

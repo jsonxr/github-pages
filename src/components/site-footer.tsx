@@ -1,5 +1,5 @@
 import { Mail } from 'lucide-react';
-import { siteConfig } from '../config/site';
+import { siteConfig } from '../config/siteConfig';
 import { Icons } from './icons';
 
 export function SiteFooter() {

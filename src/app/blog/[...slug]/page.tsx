@@ -1,10 +1,10 @@
 import { Post, posts } from '#site/content';
 import { MdxContent } from '@/components/MdxContent';
 import { Tag } from '@/components/Tag';
-import { siteConfig } from '@/config/site';
 import '@/styles/mdx.css';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
+import { siteConfig } from 'src/config/siteConfig';
 
 type Params = { slug: string[] };
 type PostPageProps = {
@@ -76,12 +76,12 @@ export async function generateMetadata({
       //   },
       // ],
     },
-    twitter: {
-      card: 'summary_large_image',
-      title: post.title,
-      description: post.description,
-      //images: [imageUrl],
-    },
+    // twitter: {
+    //   card: 'summary_large_image',
+    //   title: post.title,
+    //   description: post.description,
+    //   //images: [imageUrl],
+    // },
   };
 }
 

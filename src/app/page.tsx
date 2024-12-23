@@ -2,7 +2,7 @@ import { posts } from '#site/content';
 import Link from 'next/link';
 import { PostList } from '../components/PostList';
 import { buttonVariants } from '../components/ui/button';
-import { siteConfig } from '../config/site';
+import { siteConfig } from '../config/siteConfig';
 import { cn, sortPosts } from '../lib/utils';
 
 const LATEST_POST_COUNT = 5;

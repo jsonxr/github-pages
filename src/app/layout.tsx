@@ -3,7 +3,7 @@ import { /*Geist, Geist_Mono, */ Inter } from 'next/font/google';
 import { Providers } from '../components/providers';
 import { SiteFooter } from '../components/site-footer';
 import { SiteHeader } from '../components/site-header';
-import { siteConfig } from '../config/site';
+import { siteConfig } from '../config/siteConfig';
 import { cn } from '../lib/utils';
 import './globals.css';
 

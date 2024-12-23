@@ -1,7 +1,7 @@
-import { siteConfig } from '@/config/site';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
 import { ReactNode } from 'react';
+import { siteConfig } from 'src/config/siteConfig';
 import { HamburgerMenu } from './HamburgerMenu';
 import { type Icon, Icons } from './icons';
 import { MainNav } from './main-nav';

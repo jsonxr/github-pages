@@ -1,0 +1,32 @@
+---
+title: SSL certs with vite
+description: How to create SSL certs for localhost and configure vite to serve them
+date: 2024-01-01
+tags: ["vite", "javascript", "ssl"]
+published: true
+---
+
+# Vite SSL
+
+How to create SSL certs for localhost and configure vite to serve them
+
+```sh
+brew install mkcert nss
+mkcert -install localhost
+```
+
+```js
+import fs from "fs";
+import path from "path";
+
+export default {
+  server: {
+    https: {
+      key: fs.readFileSync(path.resolve(__dirname, "./localhost-key.pem")),
+      cert: fs.readFileSync(path.resolve(__dirname, "./localhost.pem")),
+    },
+    // Make sure the server is accessible over the local network
+    host: "0.0.0.0",
+  },
+};
+```

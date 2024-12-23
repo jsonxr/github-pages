@@ -2,6 +2,7 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Metadata } from 'next';
 import { siteConfig } from 'src/config/siteConfig';
 
+export const dynamic = 'force-static';
 export const metadata: Metadata = {
   title: 'About Me',
   description: 'Information about me',

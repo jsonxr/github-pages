@@ -40,6 +40,8 @@ export default async function PostPage({ params }: PostPageProps) {
 // Helper functions
 //----------------------------------------------------------------------------
 
+export const dynamic = 'force-static';
+
 export async function generateStaticParams(): Promise<Params[]> {
   return posts.map((post) => ({
     slug: post.slugAsParams.split('/'),

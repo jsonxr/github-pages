@@ -3,10 +3,12 @@ import { getAllTagCounts, sortTagsByCount } from '@/lib/utils';
 import { Metadata } from 'next';
 import { Tag } from '../../components/Tag';
 
+export const dynamic = 'force-static';
 export const metadata: Metadata = {
   title: 'Tags',
   description: 'Topics of interest',
 };
+
 export default async function TagsPage() {
   const tags = getAllTagCounts(posts);
   const sortedTags = sortTagsByCount(tags);

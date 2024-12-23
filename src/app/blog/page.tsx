@@ -13,17 +13,17 @@ import {
 
 const POST_PER_PAGE = 10;
 
+export const dynamic = 'force-static';
 export const metadata: Metadata = {
   title: 'My Blog',
   description: 'Articles I find interesting',
 };
 
+type Params = { page?: string };
 type BlogPageProps = {
-  searchParams: Promise<{
-    page?: string;
-  }>;
+  searchParams: Promise<Params>;
 };
-const BlogPage = async (props: BlogPageProps) => {
+export default async function BlogPage(props: BlogPageProps) {
   const params = await props.searchParams;
   const currentPage = Number(params?.page) || 1;
   const sortedPosts = sortPosts(posts.filter((post) => post.published));
@@ -69,6 +69,15 @@ const BlogPage = async (props: BlogPageProps) => {
       </div>
     </div>
   );
-};
+}
 
-export default BlogPage;
+export async function generateStaticParams(): Promise<Params[]> {
+  const sortedPosts = sortPosts(posts.filter((post) => post.published));
+  const totalPages = Math.ceil(sortedPosts.length / POST_PER_PAGE);
+  const params = Array(totalPages)
+    .fill('')
+    .map((_, i) => ({
+      page: `${i + 1}`,
+    }));
+  return params;
+}

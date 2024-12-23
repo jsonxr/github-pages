@@ -10,6 +10,8 @@ import {
 } from '@/lib/utils';
 import { Metadata } from 'next';
 
+export const dynamic = 'force-static';
+
 type Params = { tag: string };
 type TagPageProps = {
   params: Promise<Params>;

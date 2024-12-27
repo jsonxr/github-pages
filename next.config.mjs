@@ -6,6 +6,5 @@ if (!process.env.VELITE_STARTED && (isDev || isBuild)) {
   await build({ watch: isDev, clean: !isDev });
 }
 
-export default {
-  // next config here...
-};
+// eslint-disable-next-line import/no-anonymous-default-export
+export default {};
